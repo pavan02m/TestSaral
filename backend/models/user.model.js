@@ -1,0 +1,86 @@
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema(
+  {
+    email: { type: String, required: true },
+    first_name: { type: String, required: true },
+    last_name: { type: String, default: "" },
+    password: { type: String, required: true },
+    customerId: { type: String },
+    sessionId: { type: String, default: null },
+    subscriptionId: { type: String },
+    hasTrial: { type: Boolean },
+    trialDays: { type: Number },
+    subscriptionStatus: { type: String },
+    freeTrialEnd: { type: Number },
+    isSubscribed: { type: Boolean },
+    cancelledAt: { type: Date, default: null },
+    pausedAt: { type: Date, default: null },
+    paymentCheckoutEmail: { type: String, default: null },
+    token: { type: String, default: "" },
+    mail: { type: String, default: "" },
+    expiry: { type: String, default: "" },
+    refresh_token: { type: String, default: "" },
+    email_name: { type: String, default: "" },
+    email_photo: { type: String, default: "" },
+    isOnboardingShown: { type: Boolean, required: true },
+    aov_factor: { type: Number, default: null },
+    OAUTH_CLIENT_ID: { type: String, default: "" },
+    OAUTH_CLIENT_SECRET: { type: String, default: "" },
+    OAUTH_REFRESH_TOKEN: { type: String, default: "" },
+    SENDER_EMAIL: { type: String, default: "" },
+    isEmailVerified: { type: Boolean, default: false },
+    email_verification_token: { type: String, default: "" },
+    password_reset_token: { type: String, default: "" },
+    isPaymentMethodAdded: { type: Boolean, required: true },
+    isSurveyFormFilled: { type: Boolean, required: true },
+    created_at: { type: Date, required: true },
+    updated_at: { type: Date, required: true },
+    origin: { type: String, default: "" },
+    trialStartedAt: { type: Date, required: true },
+    upgradedAt: { type: Date, default: null },
+    plan: {
+      name: { type: String, required: true },
+      price: { type: Number, required: true },
+      ratnaCount: { type: Number },
+      type: { type: String },
+    },
+    showFreeCreditModal: {
+      show: { type: Boolean, required: true },
+      ratna: { type: Number, default: null },
+    },
+    giftCardStatus: { type: String, default: null },
+    isTempEmail: { type: Boolean, default: false },
+    billingInfo: {
+      addressLineOne: { type: String, default: null },
+      addressLineTwo: { type: String, default: null },
+      city: { type: String, default: null },
+      state: { type: String, default: null },
+      country: { type: String, default: null },
+      zipCode: { type: String, default: null },
+      fullName: { type: String, default: null },
+      email: { type: String, required: true },
+      phoneNumber: { type: String, default: "" },
+    },
+    showStrategySession: { type: Boolean, default: false },
+    showEmailDisconnect: {
+      show: { type: Boolean, required: true },
+      email: { type: String, default: null },
+    },
+    isStrategySessionBooked: { type: Boolean, default: false },
+    key: { type: String, default: "" },
+    fireballData: {
+      userId: { type: String, default: null },
+      apiKey: { type: String, default: null },
+      shops: { type: Array, default: [] },
+    },
+    lastSeen: {
+      type: Date,
+    },
+  },
+  { timestamps: true }
+);
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
